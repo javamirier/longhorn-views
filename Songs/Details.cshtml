@@ -24,13 +24,20 @@
         <dd>
             @Html.DisplayFor(model => model.SongPrice)
         </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SongAlbum)
-        </dt>
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Album(s)
+                </th>
+            </tr>
 
-        <dd>
-            @Html.DisplayFor(model => model.SongAlbum)
-        </dd>
+            @foreach (var item in Model.SongAlbums)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumName)</td>
+                </tr>
+            }
+        </table>
 
         <table class="table table-bordered">
             <tr>
@@ -80,7 +87,7 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.SongScore)</td>
                     <td>@Html.DisplayFor(modelItem => item.SongReviewText)</td>
-                    <td>@Html.DisplayFor(modelItem => item.SongReviewAuthor)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Review.Author)</td>
                 </tr>
             }
         </table>
