@@ -26,6 +26,38 @@
             @Html.DisplayFor(model => model.ArtistRating)
         </dd>
 
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Songs 
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ArtistSongs)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.SongName)</td>
+                </tr>
+                }
+            </table>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Albums
+                </th>
+            </tr>
+
+            @foreach (var item in Model.ArtistAlbums)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumName)</td>
+                </tr>
+            }
+        </table>
+
+
+
     </dl>
 </div>
 <p>
