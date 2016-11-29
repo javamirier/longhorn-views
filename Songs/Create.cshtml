@@ -46,9 +46,9 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2">Album</label>
+            @Html.LabelFor(model => model.SongAlbums, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("AlbumId", (SelectList)ViewBag.AllAlbums, new { @class = "form-control" })
+                @Html.ListBox("SelectedAlbums", (MultiSelectList)ViewBag.AllAlbums, new { @class = "form-control" })
             </div>
         </div>
 
