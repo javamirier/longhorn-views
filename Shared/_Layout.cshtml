@@ -20,7 +20,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Artists", "Index", "Artists")</li>
+                    <li>@Html.ActionLink("Albums", "Index", "Albums")</li>
+                    <li>@Html.ActionLink("Songs", "Index", "Songs")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -30,7 +32,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year</p>
+            <p>&copy @DateTime.Now.Year Longhorn Music Team 19</p>
         </footer>
     </div>
 
