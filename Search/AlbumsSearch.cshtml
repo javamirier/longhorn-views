@@ -1,0 +1,60 @@
+﻿@model IEnumerable<LonghornMusic.Models.Album>
+
+@{
+    ViewBag.Title = "AlbumsSearch";
+}
+
+<h2>Album Search</h2>
+
+@using (Html.BeginForm())
+{
+    <p class="form-group">
+        @Html.ActionLink("New Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
+    </p>
+}
+
+<p>
+    Displaying @ViewBag.AlbumCount of @ViewBag.AllAlbumCount Albums
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AlbumName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlbumArtists)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlbumRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AlbumPrice)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumArtists)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlbumPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.AlbumId })
+            </td>
+        </tr>
+    }
+
+</table>
+
