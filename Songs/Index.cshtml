@@ -29,9 +29,9 @@
             @Html.DisplayFor(modelItem => item.SongPrice)
         </td>
         <td>
-            
+            @Html.ActionLink("Add To Cart","AddToCart", new { id=item.SongId}) |
+            @Html.ActionLink("Details", "Details", new { id = item.SongId }) |
             @Html.ActionLink("Edit", "Edit", new { id=item.SongId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.SongId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.SongId })
         </td>
     </tr>
