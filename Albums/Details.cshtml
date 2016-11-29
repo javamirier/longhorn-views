@@ -56,12 +56,12 @@
                     Artist(s)
                 </th>
             </tr>
-
+            <!--TODO: ADD LIST TO STRING METHOD, MAKE ARTISTS A STRING FOR THIS TABLE--->
             @foreach (var item in Model.AlbumSongs)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.SongName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.SongName)</td> <!--TODO: ADD LIST TO STRING METHOD, MAKE ARTISTS A STRING FOR THIS TABLE--->
+                    <td>@Html.DisplayFor(modelItem => item.SongName)</td> 
                 </tr>
             }
         </table>
