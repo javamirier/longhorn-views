@@ -9,7 +9,9 @@
 @using (Html.BeginForm())
 {
     <p class="form-group">
-        @Html.ActionLink("New Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
+        Search: @Html.TextBox("SearchString", null, new { @class = "form-control" }) <br />
+        <input type="submit" value="Search" class="btn btn-default" />
+        @Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
         @Html.ActionLink("Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
         @Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
     </p>
