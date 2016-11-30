@@ -32,16 +32,23 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.AlbumSongs, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.ListBox("SelectedSongs", (MultiSelectList)ViewBag.AllSongs, new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.AlbumArtists, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBox("ArtistId", (MultiSelectList)ViewBag.AllArtists, new { @class = "form-control" })
+                @Html.ListBox("SelectedArtists", (MultiSelectList)ViewBag.AllArtists, new { @class = "form-control" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.AlbumGenres, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.ListBox("GenreId", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" })
+                @Html.ListBox("SelectedGenres", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" })
             </div>
         </div>
 
