@@ -16,7 +16,7 @@
 }
 
     <p>
-        Displaying @ViewBag.SongCount of @ViewBag.AllSongCount Songs
+        @ViewBag.countstring
     </p>
 
     <table class="table">
@@ -42,7 +42,7 @@
                     @Html.DisplayFor(modelItem => item.SongName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.SongArtists)
+                    @Html.DisplayFor(modelItem => item.SongArtistString)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SongRating)
