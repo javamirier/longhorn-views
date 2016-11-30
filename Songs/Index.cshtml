@@ -15,6 +15,9 @@
             @Html.DisplayNameFor(model => model.SongName)
         </th>
         <th>
+            Artist(s)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.SongPrice)
         </th>
         <th>Manager Actions</th>
@@ -24,6 +27,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.SongName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SongArtistString)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SongPrice)
