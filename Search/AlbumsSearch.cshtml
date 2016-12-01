@@ -1,22 +1,35 @@
 ﻿@model IEnumerable<LonghornMusic.Models.Album>
+@using LonghornMusic.Controllers;
 
 @{
     ViewBag.Title = "AlbumsSearch";
 }
-
+@Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("NEW Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
 <h2>Album Search</h2>
 
 @using (Html.BeginForm())
 {
     <p class="form-group">
-        @Html.ActionLink("New Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
+        Album: @Html.TextBox("NameSearchString", null, new { @class = "form-control" }) <br />
+        Genres: @Html.ListBox("SelectedGenres", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" }) <br />
+        Artist: @Html.TextBox("ArtistSearchString", null, new { @class = "form-control" }) <br />
+        
+        
+        Rating
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.GreaterThan, true, new { @class = "form-check-input" }) Greater Than
+        </label>
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.LessThan, new { @class = "form-check-input" }) Less Than:
+        </label> @Html.TextBox("RatingString", null, new { @class = "form-control" }) (1-5 Inclusive) <br />
     </p>
 }
 
 <p>
     Displaying @ViewBag.AlbumCount of @ViewBag.AllAlbumCount Albums
+    @ViewBag.ErrorMsg
 </p>
 
 <table class="table">
