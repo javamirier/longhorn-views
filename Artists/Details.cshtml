@@ -28,14 +28,28 @@
         <table class="table table-bordered">
             <tr>
                 <th>
-                    Genre
+                    Genre(s)
                 </th>
             </tr>
             @foreach (var item in Model.ArtistGenres)
             {
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.GenreName)</td>
-                    
+                </tr>
+            }
+        </table>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Albums
+                </th>
+            </tr>
+            @foreach (var item in Model.ArtistAlbums)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumName)</td>
+                    <td>@Html.ActionLink("Details", "Details", "Albums", new { Id = item.AlbumId }, new { @class = "btn btn-default" })</td>
                 </tr>
             }
         </table>
@@ -54,24 +68,36 @@
                     <td>@Html.ActionLink("Details", "Details", "Songs", new { Id = item.SongId }, new { @class = "btn btn-default" })</td>
                 </tr>
                 }
-            </table>
+        </table>
 
         <table class="table table-bordered">
             <tr>
                 <th>
-                    Albums
+                    Score
+                </th>
+                <th>
+                    Review
+                </th>
+                <th>
+                    Author
+                </th>
+                <th>
+                    Delete
                 </th>
             </tr>
-
-            @foreach (var item in Model.ArtistAlbums)
+            @foreach (var item in Model.ArtistReviews)
             {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.AlbumName)</td>
-                    <td>@Html.ActionLink("Details", "Details", "Albums", new { Id = item.AlbumId }, new { @class = "btn btn-default" })</td>
+                    <td>@Html.DisplayFor(modelItem => item.ArtistScore)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.ArtistReviewText)</td>
+
+                    <td>@Html.DisplayFor(modelItem => item.ArtistReviewAuthor.UserName)</td>
+
+                    <td>@Html.ActionLink("Delete", "ArtistReviewDelete", "Reviews", new { Id = item.ArtistReviewId }, new { @class = "btn btn-default" })</td>
                 </tr>
             }
         </table>
-
 
 
     </dl>
