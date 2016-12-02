@@ -54,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.ArtistRating)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ArtistId }, new { @class = "btn btn-default" })
+                @Html.ActionLink("Details", "Details", "Artists", new { Id = item.ArtistId }, new { @class = "btn btn-default" })
             </td>
         </tr>
     }
