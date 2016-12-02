@@ -1,39 +1,54 @@
 ﻿@model IEnumerable<LonghornMusic.Models.Song>
-
+@using LonghornMusic.Controllers;
     @{
         ViewBag.Title = "SongsSearch";
     }
-
+@Html.ActionLink("NEW Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
     <h2>Song Search</h2>
 
 @using (Html.BeginForm())
 {
     <p class="form-group">
-        Search: @Html.TextBox("SearchString", null, new { @class = "form-control" }) <br />
+        Song: @Html.TextBox("NameSearchString", null, new { @class = "form-control" }) <br />
+        Artist: @Html.TextBox("ArtistSearchString", null, new { @class = "form-control" }) <br />
+        Album: @Html.TextBox("AlbumSearchString", null, new { @class = "form-control" }) <br />
+        Genres: @Html.ListBox("SelectedGenres", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" }) <br />
+        Rating 
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.GreaterThan, true, new { @class = "form-check-input" }) Greater Than
+        </label>
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.LessThan, new { @class = "form-check-input" }) Less Than:
+        </label> @Html.TextBox("RatingString", null, new { @class = "form-control" }) (1-5 Inclusive) <br />
+
         <input type="submit" value="Search" class="btn btn-default" />
-        @Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
+
     </p>
 }
 
     <p>
-        @ViewBag.countstring
+        @ViewBag.ErrorMsg
     </p>
-
+    <p>
+        Displaying @ViewBag.SongCount of @ViewBag.AllSongCount Songs
+    </p>
+    
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.SongName)
+                Song
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SongArtists)
+                Artists
+            </th>
+            <th>Albums</th>
+            <th>
+                Rating
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.SongRating)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SongPrice)
+                Price
             </th>
         </tr>
 
@@ -46,6 +61,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.SongArtistString)
                 </td>
+                <td>@Html.DisplayFor(modelItem => item.SongAlbumString)</td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SongRating)
                 </td>
@@ -53,7 +69,8 @@
                     @Html.DisplayFor(modelItem => item.SongPrice)
                 </td>
                 <td>
-                    @Html.ActionLink("Details", "Details", new { id = item.SongId })
+                    @Html.ActionLink("Details", "Details", "Songs", new {Id = item.SongId}, new { @class = "btn btn-default" })
+
                 </td>
             </tr>
         }

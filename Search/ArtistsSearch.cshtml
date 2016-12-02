@@ -1,20 +1,35 @@
 ﻿@model IEnumerable<LonghornMusic.Models.Artist>
-
+@using LonghornMusic.Controllers;
 @{
     ViewBag.Title = "ArtistsSearch";
 }
 
-<h2>Artist Search</h2>
+@Html.ActionLink("New Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
+    <h2>Artist Search</h2>
 
 @using (Html.BeginForm())
 {
     <p class="form-group">
-        @Html.ActionLink("New Artist Search", "ArtistsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Song Search", "SongsSearch", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Album Search", "AlbumsSearch", null, new { @class = "btn btn-default" })
+        Artist: @Html.TextBox("NameSearchString", null, new { @class = "form-control" }) <br />
+        Genres: @Html.ListBox("SelectedGenres", (MultiSelectList)ViewBag.AllGenres, new { @class = "form-control" }) <br />
+        Rating
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.GreaterThan, true, new { @class = "form-check-input" }) Greater Than
+        </label>
+        <label class="form-check-label">
+            @Html.RadioButton("GorL", GreaterOrLess.LessThan, new { @class = "form-check-input" }) Less Than:
+        </label> @Html.TextBox("RatingString", null, new { @class = "form-control" }) (1-5 Inclusive) <br />
+
+        <input type="submit" value="Search" class="btn btn-default" />
+
     </p>
 }
 
+<p>
+    @ViewBag.ErrorMsg
+</p>
 <p>
     Displaying @ViewBag.ArtistCount of @ViewBag.AllArtistCount Artists
 </p>
@@ -22,10 +37,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ArtistName)
+            Artist
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ArtistRating)
+            Rating
         </th>
     </tr>
 
@@ -39,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.ArtistRating)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.ArtistId })
+                @Html.ActionLink("Details", "Details", "Artists", new { Id = item.ArtistId }, new { @class = "btn btn-default" })
             </td>
         </tr>
     }
