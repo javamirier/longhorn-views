@@ -1,0 +1,49 @@
+﻿@model LonghornMusic.Models.ArtistReview
+
+@{
+    ViewBag.Title = "CreateArtistReview";
+}
+
+<h2>Review Artist</h2>
+
+@using (Html.BeginForm())
+{
+    <p class="form-group">
+        Artist: @ViewBag.ArtistName <br />
+
+        <label class="form-check-label">
+            Select a Rating: 1 @Html.RadioButton("ArtistScore", 1, true, new { @class = "form-check-input" })
+
+            2 @Html.RadioButton("ArtistScore", 2, new { @class = "form-check-input" })
+
+            3 @Html.RadioButton("ArtistScore", 3, new { @class = "form-check-input" })
+
+            4 @Html.RadioButton("ArtistScore", 4, new { @class = "form-check-input" })
+
+            5 @Html.RadioButton("ArtistScore", 5, new { @class = "form-check-input" })
+        </label> <br />
+        <label class="form-check-label">
+            Comment (optional) @Html.TextBox("ArtistReviewText", null, new { @class = "form-control" }) <br />
+        </label>
+    </p>
+
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+
+
+
+
+

@@ -87,7 +87,7 @@
                 <tr>
                     <td>@Html.DisplayFor(modelItem => item.SongScore)</td>
                     <td>@Html.DisplayFor(modelItem => item.SongReviewText)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Review.Author)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SongReviewAuthor.UserName)</td>
                 </tr>
             }
         </table>
@@ -96,6 +96,7 @@
 </div>
 <p>
     @Html.ActionLink("Add To Cart", "AddSongToCart", "Purchases", new { SongId = Model.SongId }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Review Song", "CreateSongReview", "Reviews", new { SongId = Model.SongId }, new { @class = "btn btn-default" })
     @Html.ActionLink("Edit", "Edit", new { id = Model.SongId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

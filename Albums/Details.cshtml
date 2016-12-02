@@ -4,49 +4,24 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Album</h2>
 
 <div>
-    <h4>Album Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.AlbumName)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.AlbumName)
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.AlbumPrice)
         </dt>
-
         <dd>
             @Html.DisplayFor(model => model.AlbumPrice)
         </dd>
 
-        <table class="table table-bordered">
-            <tr>
-                <th>
-                    Score
-                </th>
-                <th>
-                    Review
-                </th>
-                <th>
-                    User
-                </th>
-            </tr>
-
-            @foreach (var item in Model.AlbumReviews)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.AlbumScore)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Review)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Review.Author)</td>
-                </tr>
-            }
-        </table>
         <table class="table table-bordered">
             <tr>
                 <th>
@@ -66,10 +41,33 @@
             }
         </table>
 
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    Score
+                </th>
+                <th>
+                    Review
+                </th>
+                <th>
+                    User
+                </th>
+            </tr>
+            @foreach (var item in Model.AlbumReviews)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumScore)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumReviewText)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AlbumReviewAuthor.UserName)</td>
+                </tr>
+            }
+        </table>
+
     </dl>
 </div>
 <p>
+    @Html.ActionLink("Add To Cart", "AddAlbumToCart", "Purchases", new { AlbumId = Model.AlbumId }, new { @class = "btn btn-default" })
+    @Html.ActionLink("Review Album", "CreateAlbumReview", "Reviews", new { AlbumId = Model.AlbumId }, new { @class = "btn btn-default" })
     @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumId }) |
     @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Add To Cart", "AddAlbumToCart", "Purchases", new { AlbumId = Model.AlbumId }, new { @class = "btn btn-default" })
 </p>
