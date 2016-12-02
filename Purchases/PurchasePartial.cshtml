@@ -1,0 +1,16 @@
+﻿@model LonghornMusic.Models.Purchase
+
+@{
+    ViewBag.Title = "PurchasePartial";
+}
+
+<h2>Purchase Partial</h2>
+
+<div>
+    <h4>Item Added To Cart</h4>
+    <hr />
+</div>
+<p>    
+    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Finalize Purchase", "Edit", new { id = Model.PurchaseId })
+</p>

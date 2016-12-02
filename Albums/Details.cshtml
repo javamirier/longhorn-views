@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Album</h4>
+    <h4>Album Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -71,4 +71,5 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumId }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Add To Cart", "AddAlbumToCart", "Purchases", new { AlbumId = Model.AlbumId }, new { @class = "btn btn-default" })
 </p>

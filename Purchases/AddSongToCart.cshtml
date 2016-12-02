@@ -1,13 +1,13 @@
 ﻿@model LonghornMusic.Models.Song
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "AddSongToCart";
 }
 
-<h2>Details</h2>
+<h2>AddSongToCart</h2>
 
 <div>
-    <h4>Song</h4>
+    <h4>Add Song To Cart</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,6 +17,7 @@
         <dd>
             @Html.DisplayFor(model => model.SongName)
         </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.SongPrice)
         </dt>
@@ -24,6 +25,7 @@
         <dd>
             @Html.DisplayFor(model => model.SongPrice)
         </dd>
+
         <table class="table table-bordered">
             <tr>
                 <th>
@@ -69,33 +71,9 @@
             }
         </table>
 
-        <table class="table table-bordered">
-            <tr>
-                <th>
-                    Score
-                </th>
-                <th>
-                    Review
-                </th>
-                <th>
-                    User
-                </th>
-            </tr>
-
-            @foreach (var item in Model.SongReviews)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.SongScore)</td>
-                    <td>@Html.DisplayFor(modelItem => item.SongReviewText)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Review.Author)</td>
-                </tr>
-            }
-        </table>
-
     </dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.SongId }) |
     @Html.ActionLink("Back to List", "Index")
-    @Html.ActionLink("Add To Cart", "AddSongToCart", "Purchases", new { SongId = Model.SongId }, new { @class = "btn btn-default" })
 </p>
