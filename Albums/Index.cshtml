@@ -12,13 +12,33 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AlbumName)
+            Album Name
         </th>
-        <th></th>
+        <th>
+            Artist(s)
+        </th>
+        <th>
+            Rating
+        </th>
+        <th>
+            Price
+        </th>
+        <th>
+            Actions
+        </th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlbumName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlbumArtistString)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AlbumName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.AlbumName)
         </td>

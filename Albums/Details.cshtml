@@ -21,6 +21,12 @@
         <dd>
             @Html.DisplayFor(model => model.AlbumPrice)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumRating)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlbumRating)
+        </dd>
 
         <table class="table table-bordered">
             <tr>
@@ -50,7 +56,10 @@
                     Review
                 </th>
                 <th>
-                    User
+                    Author
+                </th>
+                <th>
+                    Delete
                 </th>
             </tr>
             @foreach (var item in Model.AlbumReviews)
@@ -59,6 +68,7 @@
                     <td>@Html.DisplayFor(modelItem => item.AlbumScore)</td>
                     <td>@Html.DisplayFor(modelItem => item.AlbumReviewText)</td>
                     <td>@Html.DisplayFor(modelItem => item.AlbumReviewAuthor.UserName)</td>
+                    <td>@Html.ActionLink("Delete", "AlbumReviewDelete", "Reviews", new { Id = item.AlbumReviewId }, new { @class = "btn btn-default" })</td>
                 </tr>
             }
         </table>
