@@ -28,6 +28,21 @@
         <table class="table table-bordered">
             <tr>
                 <th>
+                    Genre
+                </th>
+            </tr>
+            @foreach (var item in Model.ArtistGenres)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.GenreName)</td>
+                    
+                </tr>
+            }
+        </table>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>
                     Songs 
                 </th>
             </tr>
